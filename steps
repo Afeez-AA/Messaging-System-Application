@@ -1,0 +1,88 @@
+1. Install Necessary Dependencies
+Update your system and install the required software.
+            sudo apt-get update
+sudo apt-get install -y rabbitmq-server nginx python3-pip
+sudo apt-get install -y redis-server
+
+2. Set Up RabbitMQ and Redis
+Start and enable the RabbitMQ and Redis services.
+
+sudo systemctl start rabbitmq-server
+sudo systemctl enable rabbitmq-server
+sudo systemctl start redis-server
+sudo systemctl enable redis-server
+
+sudo systemctl status nginx
+sudo systemctl start python3-pip
+sudo systemctl status rabbitmq-server
+sudo systemctl status redis
+
+
+3. clone the repo and cd into the directory
+
+mkdir messaging_system
+
+4. create an environment 
+sudo apt install python3.12-venv 
+python3 -m venv myprojectenv
+source myprojectenv/bin/activate
+
+pip3 install celery[redis] flask
+
+5. Create Nginx Configuration File:
+
+Assuming you've already created your Nginx configuration file named messaging_system under /etc/nginx/sites-available/.
+
+sudo nano /etc/nginx/sites-available/messaging_system
+
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+6. Create a Symbolic Link:
+
+Next, create a symbolic link of your configuration file from sites-available to sites-enabled:
+sudo ln -s /etc/nginx/sites-available/messaging_system /etc/nginx/sites-enabled/
+
+
+7. Verify Nginx Configuration:
+
+Check the Nginx configuration for syntax errors:
+sudo nginx -t
+sudo systemctl restart nginx
+
+
+9. create your log directory with necessary permission. 
+
+10. install ngrok
+
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+	| sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+	&& echo "deb https://ngrok-agent.s3.amazonaws.com buster main" \
+	| sudo tee /etc/apt/sources.list.d/ngrok.list \
+	&& sudo apt update \
+	&& sudo apt install ngrok
+
+ngrok config add-authtoken #####################################
+
+
+11. run the python app, run the celery app ngrok in the backgound 
+nohup python3 app.py &
+nohup celery -A celery_app worker --loglevel=info
+nohup ngrok http --domain=blessed-completely-lioness.ngrok-free.app 5000
+
+
+
+
+
+
+
