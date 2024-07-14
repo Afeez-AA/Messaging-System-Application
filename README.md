@@ -109,7 +109,7 @@ Run the Flask app, Celery worker, and Ngrok in the background:
 ```bash
 nohup python3 app.py &
 nohup celery -A celery_app worker --loglevel=info &
-nohup ngrok http --domain=blessed-completely-lioness.ngrok-free.app 5000 &
+nohup ngrok http 5000 &
 ```
 
 # Code Walkthrough

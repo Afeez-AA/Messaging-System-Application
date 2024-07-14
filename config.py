@@ -13,7 +13,7 @@ class Config:
     SMTP_PORT = 587
     SMTP_USERNAME = 'afeeztesthng@gmail.com'
     SMTP_PASSWORD = 'whnoklnikqnedwwv'
-    LOG_FILE_PATH = './log/messaging_system.log'
+    LOG_FILE_PATH = '/var/log/messaging_system.log'
 
 
 

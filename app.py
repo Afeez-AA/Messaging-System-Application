@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 from tasks import send_email, log_current_time
 from config import Config, RequestFilter  # Import RequestFilter here
 import logging
@@ -26,6 +26,19 @@ def message():
 
     logging.warning('Invalid request received')
     return 'Invalid request.', 400
+
+@app.route('/logs', methods=['GET'])
+def get_logs():
+    try:
+        with open(Config.LOG_FILE_PATH, 'r') as f:
+            log_contents = f.read()
+        return Response(log_contents, mimetype='text/plain')
+    except FileNotFoundError:
+        logging.error(f'Log file not found at {Config.LOG_FILE_PATH}')
+        return 'Log file not found.', 404
+    except Exception as e:
+        logging.error(f'Error reading log file: {e}')
+        return 'Failed to retrieve logs.', 500
 
 if __name__ == '__main__':
     log = logging.getLogger('werkzeug')
