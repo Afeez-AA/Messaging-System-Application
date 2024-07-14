@@ -63,3 +63,71 @@ you should set broker_connection_retry_on_startup to True.
 [2024-07-13 14:17:18,237: INFO/MainProcess] Task tasks.send_email[685d2349-76bb-4452-a2bc-593152b523f5] received
 [2024-07-13 14:17:18,883: INFO/ForkPoolWorker-2] Email sent successfully to afeeztesthng@gmail.com
 [2024-07-13 14:17:18,884: INFO/ForkPoolWorker-2] Task tasks.send_email[685d2349-76bb-4452-a2bc-593152b523f5] succeeded in 0.646142763998796s: None
+
+Restarting celery worker (/home/ubuntu/messaging_system/myprojectenv/bin/celery -A celery_app worker --loglevel=info)
+ 
+ -------------- celery@ip-172-31-27-243 v5.4.0 (opalescent)
+--- ***** ----- 
+-- ******* ---- Linux-6.8.0-1009-aws-x86_64-with-glibc2.39 2024-07-13 14:46:45
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         messaging_system:0x7c013046b0b0
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . tasks.log_current_time
+  . tasks.send_email
+
+[2024-07-13 14:46:45,294: WARNING/MainProcess] /home/ubuntu/messaging_system/myprojectenv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-07-13 14:46:45,304: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2024-07-13 14:46:45,305: WARNING/MainProcess] /home/ubuntu/messaging_system/myprojectenv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-07-13 14:46:45,307: INFO/MainProcess] mingle: searching for neighbors
+[2024-07-13 14:46:46,315: INFO/MainProcess] mingle: all alone
+[2024-07-13 14:46:46,325: INFO/MainProcess] celery@ip-172-31-27-243 ready.
+[2024-07-13 14:46:46,629: INFO/MainProcess] Task tasks.log_current_time[1910fed0-6171-404d-aad4-632621915abe] received
+[2024-07-13 14:46:46,630: INFO/ForkPoolWorker-2] Logged current time: 2024-07-13 14:46:46
+[2024-07-13 14:46:46,636: INFO/ForkPoolWorker-2] Task tasks.log_current_time[1910fed0-6171-404d-aad4-632621915abe] succeeded in 0.005833386003359919s: None
+[2024-07-13 14:46:49,758: INFO/MainProcess] Task tasks.send_email[bb858325-19ff-4845-8b13-382ccd69c23a] received
+[2024-07-13 14:46:50,628: INFO/ForkPoolWorker-2] Email sent successfully to afeeztesthng@gmail.com
+[2024-07-13 14:46:50,629: INFO/ForkPoolWorker-2] Task tasks.send_email[bb858325-19ff-4845-8b13-382ccd69c23a] succeeded in 0.8705023000002257s: None
+[2024-07-13 14:47:44,181: INFO/MainProcess] Task tasks.log_current_time[6a1646fe-7584-4c94-97a1-195427f8415f] received
+[2024-07-13 14:47:44,182: INFO/ForkPoolWorker-2] Logged current time: 2024-07-13 14:47:44
+[2024-07-13 14:47:44,183: INFO/ForkPoolWorker-2] Task tasks.log_current_time[6a1646fe-7584-4c94-97a1-195427f8415f] succeeded in 0.001074497999070445s: None
+[2024-07-13 14:48:03,957: INFO/MainProcess] Task tasks.log_current_time[dea6278f-2cb8-4a59-a690-2f87b717ed8e] received
+[2024-07-13 14:48:03,959: INFO/ForkPoolWorker-2] Logged current time: 2024-07-13 14:48:03
+[2024-07-13 14:48:03,959: INFO/ForkPoolWorker-2] Task tasks.log_current_time[dea6278f-2cb8-4a59-a690-2f87b717ed8e] succeeded in 0.0010694529992179014s: None
+[2024-07-13 14:48:19,861: INFO/MainProcess] Task tasks.log_current_time[76d511ab-8b69-486d-8191-1e8bc60e20c4] received
+[2024-07-13 14:48:19,862: INFO/ForkPoolWorker-2] Logged current time: 2024-07-13 14:48:19
+[2024-07-13 14:48:19,862: INFO/ForkPoolWorker-2] Task tasks.log_current_time[76d511ab-8b69-486d-8191-1e8bc60e20c4] succeeded in 0.0008729379987926222s: None
+[2024-07-13 14:48:29,190: INFO/MainProcess] Task tasks.log_current_time[39640bec-7139-408f-9429-825497d9681c] received
+[2024-07-13 14:48:29,191: INFO/ForkPoolWorker-2] Logged current time: 2024-07-13 14:48:29
+[2024-07-13 14:48:29,192: INFO/ForkPoolWorker-2] Task tasks.log_current_time[39640bec-7139-408f-9429-825497d9681c] succeeded in 0.0010866939992411062s: None
+[2024-07-13 14:59:48,122: INFO/MainProcess] Task tasks.log_current_time[2d63959b-aff6-4e51-b87d-19fe24032755] received
+[2024-07-13 14:59:48,123: INFO/ForkPoolWorker-2] Logged current time: 2024-07-13 14:59:48
+[2024-07-13 14:59:48,124: INFO/ForkPoolWorker-2] Task tasks.log_current_time[2d63959b-aff6-4e51-b87d-19fe24032755] succeeded in 0.0010626490002323408s: None
+[2024-07-13 15:00:00,393: INFO/MainProcess] Task tasks.log_current_time[03dde821-218d-4581-a62b-9d05d0dfdd6c] received
+[2024-07-13 15:00:00,394: INFO/ForkPoolWorker-2] Logged current time: 2024-07-13 15:00:00
+[2024-07-13 15:00:00,395: INFO/ForkPoolWorker-2] Task tasks.log_current_time[03dde821-218d-4581-a62b-9d05d0dfdd6c] succeeded in 0.0010507629995117895s: None
+[2024-07-13 16:55:16,047: INFO/MainProcess] Task tasks.send_email[467a2cff-e449-467b-ae9a-3eaaa702b392] received
+[2024-07-13 16:55:16,658: INFO/ForkPoolWorker-2] Email sent successfully to afeeztesthng@gmail.com
+[2024-07-13 16:55:16,659: INFO/ForkPoolWorker-2] Task tasks.send_email[467a2cff-e449-467b-ae9a-3eaaa702b392] succeeded in 0.6115778499952285s: None
+[2024-07-14 09:24:56,631: INFO/MainProcess] Task tasks.log_current_time[4caea723-be6a-4abe-b299-3a8b8cb3f415] received
+[2024-07-14 09:24:56,632: INFO/ForkPoolWorker-2] Logged current time: 2024-07-14 09:24:56
+[2024-07-14 09:24:56,633: INFO/ForkPoolWorker-2] Task tasks.log_current_time[4caea723-be6a-4abe-b299-3a8b8cb3f415] succeeded in 0.0009254930046154186s: None
